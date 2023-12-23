@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thala for a reason</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Dhoni Review System (DRS)</h1>
+      <b>Meme project</b>
+      <p>Everything is there for a reason !</p>
+      <p>
+        Inspired from dumbs who always find thala as a reason for everything,
+        literally everything :)
+      </p>
+      <div id="input-field">
+        <input type="text" id="input-box" placeholder="Input Number" />
+        <p id="output"></p>
+        <button type="button" onclick="play()">Find the Reason</button>
+      </div>
+      <div id="video-container"></div>
+      <script src="./confetti.js"></script>
+    </div>
+    <script>
+      var videoContainer = document.getElementById("video-container");
+
+      var video = document.createElement("video");
+      video.width = 300;
+      video.height = 300;
+
+      var source = document.createElement("source");
+      source.src = "./assets/video.mp4";
+      source.type = "video/mp4";
+
+      video.appendChild(source);
+      videoContainer.appendChild(video);
+
+      function play() {
+        let input = document.getElementById("input-box");
+        if (!isNaN(input.value)) {
+          if (input.value == 7) {
+            let output = document.getElementById("output");
+            output.innerHTML = "Thala for a reason";
+            video.play();           
+          } else {
+            let output = document.getElementById("output");
+            let a = input.value - 7;
+            if (a < 0) {
+              output.innerHTML = `${input.value} - (${a}) = 7`;
+              video.play();
+            } else {
+              output.innerHTML = `${input.value} - ${a} = 7`;
+              video.play();             
+            }
+          }
+        }
+        else {
+            if(input.value.length == 7) {
+                output.innerHTML = `${input.value} has 7 letters`;
+                video.play();               
+            }
+        }
+
+        const startCelebration = () => {
+          setTimeout(function () {
+            confetti.start();
+          });
+          setTimeout(function () {
+            confetti.stop();
+          }, 3000);
+        };
+        startCelebration();
+        
+      }
+    </script>
+  </body>
+</html>
